@@ -38,17 +38,27 @@ public class SmsServlet extends HttpServlet{
         resp.setStatus(HttpServletResponse.SC_OK);
         PrintWriter out=resp.getWriter();
         out.println("<html>" +
-                "<title>SMS Form</title>" +
-                "<body>Hey Ramsu ! Send Text to My Phone !" +
-                "<form method='post'>" +
-                "Phone # : "+
-                "<input type='text' name='phone_number' value='4692167255'/><br/>" +
-                "Message : "+
-                "<input type='text' name='message'/><br/>"+
-                "<input type='submit' value='Send'/>" +
-                "</form>" +
-                "</body>" +
-                "</html>");
+              "<title>Dial and Call</title>" +
+              "<body>Enter the number to call" +
+              "<form method='post'>" +
+              "Phone # : "+
+              "<input type='text' name='phone_number' value='2142888748'/><br/>" +
+              "<input type='submit' value='Call'/>" +
+              "</form>" +
+              "</body>" +
+              "</html>");
+//        out.println("<html>" +
+//                "<title>SMS Form</title>" +
+//                "<body>Hey Ramsu ! Send Text to My Phone !" +
+//                "<form method='post'>" +
+//                "Phone # : "+
+//                "<input type='text' name='phone_number' value='4692167255'/><br/>" +
+//                "Message : "+
+//                "<input type='text' name='message'/><br/>"+
+//                "<input type='submit' value='Send'/>" +
+//                "</form>" +
+//                "</body>" +
+//                "</html>");
     }
     
     /**
@@ -64,21 +74,22 @@ public class SmsServlet extends HttpServlet{
         String phoneNumber=req.getParameter("phone_number");
         String message=req.getParameter("message");
         
-        if(phoneNumber==null || message==null) {
+        //if(phoneNumber==null || message==null) {
+        if(phoneNumber==null ) {
             out.println("Invalid input");
             return;
         }
 
        
         String phonenumber = "4692167255";
-        context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phonenumber)));
+        context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber)));
 
         //sendSMS(phoneNumber, message);
         
         out.println("<html>" +
                 "<title>SMS Form</title>" +
                 "<body>" +
-                "Message sent to " + phoneNumber +
+                "Dialling " + phoneNumber + " ... " +
                 "</body>" +
                 "</html>");
     }
