@@ -39,26 +39,34 @@ public class SmsServlet extends HttpServlet{
         PrintWriter out=resp.getWriter();
         out.println("<html>" +
               "<title>Dial and Call</title>" +
-              "<body>Enter the number to call" +
+              "<body bgcolor='#d0bfbf'><h1 style='color:#2f2f2f'>Enter SIP Address</h1>" +
               "<form method='post'>" +
-              "Phone # : "+
               "<input type='text' name='phone_number' value='2142888748'/><br/>" +
               "<input type='submit' value='Call'/>" +
               "</form>" +
-              "</body>" +
-              "</html>");
-//        out.println("<html>" +
-//                "<title>SMS Form</title>" +
-//                "<body>Hey Ramsu ! Send Text to My Phone !" +
-//                "<form method='post'>" +
-//                "Phone # : "+
-//                "<input type='text' name='phone_number' value='4692167255'/><br/>" +
-//                "Message : "+
-//                "<input type='text' name='message'/><br/>"+
-//                "<input type='submit' value='Send'/>" +
-//                "</form>" +
-//                "</body>" +
-//                "</html>");
+              "<style type='text/css'>" +
+			  ".tftable {font-size:12px;color:#fbfbfb;width:100%;border-width: 1px;border-color: #686767;border-collapse: collapse;}"+
+			  ".tftable th {font-size:12px;background-color:#171515;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;text-align:left;}" +
+			  ".tftable tr {background-color:#2f2f2f;}" +
+			  ".tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #686767;}" +
+			  ".tftable tr:hover {background-color:#171515;}" +
+			  "</style>" +
+			  "<table class='tftable' border='1'>" +
+			  "<tr><th>Name</th><th>SIP Address</th></tr>" +
+			  "<tr><td>Row:1 Cell:1</td><td>Row:1 Cell:2</td></tr>" +
+			  "<tr><td>Row:2 Cell:1</td><td>Row:2 Cell:2</td></tr>" +
+			  "<tr><td>Row:3 Cell:1</td><td>Row:3 Cell:2</td></tr>" +
+			  "<tr><td>Row:4 Cell:1</td><td>Row:4 Cell:2</td></tr>" +
+			  "<tr><td>Row:5 Cell:1</td><td>Row:5 Cell:2</td></tr>" +
+			  "<tr><td>Row:6 Cell:1</td><td>Row:6 Cell:2</td></tr>" +
+			  "<tr><td>Row:7 Cell:1</td><td>Row:7 Cell:2</td></tr>" +
+			  "<tr><td>Row:8 Cell:1</td><td>Row:8 Cell:2</td></tr>" +
+			  "<tr><td>Row:9 Cell:1</td><td>Row:9 Cell:2</td></tr>" +
+			  "</table>" +
+			
+				              "</body>" +
+				              "</html>");
+
     }
     
     /**
@@ -74,35 +82,23 @@ public class SmsServlet extends HttpServlet{
         String phoneNumber=req.getParameter("phone_number");
         String message=req.getParameter("message");
         
-        //if(phoneNumber==null || message==null) {
         if(phoneNumber==null ) {
             out.println("Invalid input");
             return;
         }
 
-       
-        String phonenumber = "4692167255";
         context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber)));
 
         //sendSMS(phoneNumber, message);
         
         out.println("<html>" +
-                "<title>SMS Form</title>" +
+                "<title>Dialling the number</title>" +
                 "<body>" +
                 "Dialling " + phoneNumber + " ... " +
                 "</body>" +
                 "</html>");
     }
-//    public void init(ServletConfig config) throws ServletException 
-//    { 
-//    	try {
-//			this.context = 
-//        (android.content.Context)config.getServletContext().getAttribute("org.mortbay.ijetty.context"); 
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//      
-//    }  
+
     
 	private void sendSMS(String phoneNumber, String message){
         SmsManager sms=SmsManager.getDefault();
