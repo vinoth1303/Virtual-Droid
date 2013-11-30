@@ -41,7 +41,7 @@ public class SmsServlet extends HttpServlet{
               "<title>Dial and Call</title>" +
               "<body bgcolor='#d0bfbf'><h1 style='color:#2f2f2f'>Enter SIP Address</h1>" +
               "<form method='post'>" +
-              "<input type='text' name='phone_number' value='2142888748'/><br/>" +
+              "<input type='text' name='phone_number' value='parthiban88@sip.linphone.org'/><br/>" +
               "<input type='submit' value='Call'/>" +
               "</form>" +
               "<style type='text/css'>" +
@@ -87,7 +87,7 @@ public class SmsServlet extends HttpServlet{
             return;
         }
 
-        context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber)));
+        context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("sip:" + phoneNumber)));
 
         //sendSMS(phoneNumber, message);
         
