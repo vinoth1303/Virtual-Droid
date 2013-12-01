@@ -45,7 +45,7 @@ public class MyHttpServer{
         server=new Server(8000); // The port is being set here
         handler=new ServletContextHandler();
         handler.setContextPath("/");
-        handler.addServlet(new ServletHolder(new SmsServlet(context)),"/sms");
+        handler.addServlet(new ServletHolder(new SmsServlet(context)),"/sipclient");
         server.setHandler(handler);
         
         
