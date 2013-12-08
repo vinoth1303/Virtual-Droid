@@ -46,6 +46,8 @@ public class MyHttpServer{
         handler=new ServletContextHandler();
         handler.setContextPath("/");
         handler.addServlet(new ServletHolder(new SmsServlet(context)),"/sipclient");
+        handler.addServlet(new ServletHolder(new SimpleServlet(context)),"/sms");
+        handler.addServlet(new ServletHolder(new CallServlet(context)),"/call");
         server.setHandler(handler);
         
         

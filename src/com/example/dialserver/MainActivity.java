@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         server=new MyHttpServer(MainActivity.this);
         server.start();
 
-        ipAddress.setText(server.getIPAddress());
+        ipAddress.setText("Your IP Address :" + server.getIPAddress());
     }
 
     @Override
